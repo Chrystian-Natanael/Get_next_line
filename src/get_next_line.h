@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:53:18 by cnatanae          #+#    #+#             */
-/*   Updated: 2023/11/14 14:46:52 by cnatanae         ###   ########.fr       */
+/*   Updated: 2023/11/17 11:41:24 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ typedef struct s_char
 */
 typedef struct s_list
 {
-	int				fd;
-	int				pos;
-	int				read;
-	int				len;
-	char			buffer[BUFFER_SIZE];
-	t_char			*string;
-}					t_list;
+	unsigned long int	fd;
+	unsigned long int	pos;
+	long int			read;
+	unsigned long int	len;
+	char				buffer[BUFFER_SIZE + 1];
+	t_char				*string;
+}						t_list;
 
 /**@brief Function to get the next line.
  * 
@@ -64,6 +64,51 @@ char	*get_next_line(int fd);
  * @param *str The pointer to the linked list.
  * @return char* The pointer to NULL.
 */
-char	*free_all(t_char *str);
+void	free_all(t_char **str);
+
+/**@brief Function to create a new node and add character to it.
+ * 
+ * @param *str The character to be added.
+ * @return t_char* The pointer to the new node.
+*/
+t_char	*ft_node(char c);
+
+/**@brief Function to get the size of the linked list.
+ * 
+ * @param *lst The pointer to the linked list.
+ * @param *struc The pointer to the struct t_list.
+ * @return int The size of the linked list.
+*/
+int		ft_lstsize(t_char *lst, t_list *struc);
+
+/**@brief Function to find the character '\n' in the linked list.
+ * 
+ * @param *struc The pointer to the struct t_list.
+ * @return int 1 if '\n' is found, 0 if not.
+*/
+int		ft_find_n(t_list *struc);
+
+/**@brief Function to build the string.
+ * 
+ * @param *struc The pointer to the struct t_list.
+ * @return char* The pointer to the string.
+*/
+char	*ft_build_string(t_list *struc);
+
+/**@brief Function to add the buffer to the linked list.
+ * 
+ * @param *struc The pointer to the struct t_list.
+ * @return char* The pointer to the string.
+*/
+char	*ft_add_lk(t_list *struc);
+
+/**@brief Function to add a new node to the end of the linked list.
+ * 
+ * @param *struc The pointer to the struct t_list.
+ * @param *end The pointer to the last node of the linked list.
+ * @param c The character to be added.
+ * @return t_char* The pointer to the new node.
+*/
+t_char	*add_node_to_end(t_list *struc, t_char *end, char c);
 
 #endif
