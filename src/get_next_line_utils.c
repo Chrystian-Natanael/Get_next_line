@@ -6,23 +6,77 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:53:12 by cnatanae          #+#    #+#             */
-/*   Updated: 2023/11/14 18:10:00 by cnatanae         ###   ########.fr       */
+/*   Updated: 2023/11/17 11:37:33 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*free_all(t_char *str)
+void	free_all(t_char **str)
 {
 	t_char	*aux;
 
-	aux = str;
+	while (*str)
+	{
+		aux = (*str)->next;
+		free(*str);
+		*str = aux;
+	}
+}
+
+t_char	*ft_node(char c)
+{
+	t_char	*new_node;
+
+	new_node = (t_char *)malloc(sizeof(t_char));
+	if (!new_node)
+		return (NULL);
+	new_node->character = c;
+	new_node->next = NULL;
+	return (new_node);
+}
+
+int	ft_lstsize(t_char *lst, t_list *struc)
+{
+	int	idx;
+
+	idx = 0;
+	while (lst->character != '\n' && lst->next)
+	{
+		lst = lst->next;
+		idx++;
+	}
+	struc->len = idx;
+	return (idx);
+}
+
+int	ft_find_n(t_list *struc)
+{
+	t_char	*aux;
+
+	aux = struc->string;
 	while (aux)
 	{
-		aux = str->next;
-		free(str);
-		str = aux;
+		if (aux->character == '\n')
+			return (1);
+		aux = aux->next;
 	}
-	aux = NULL;
-	return (NULL);
+	return (0);
+}
+
+t_char	*add_node_to_end(t_list *struc, t_char *end, char c)
+{
+	t_char	*new_node;
+
+	new_node = ft_node(c);
+	if (!new_node)
+	{
+		free_all(&struc->string);
+		return (NULL);
+	}
+	if (end)
+		end->next = new_node;
+	else
+		struc->string = new_node;
+	return (new_node);
 }
