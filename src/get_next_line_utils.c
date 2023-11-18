@@ -6,13 +6,13 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:53:12 by cnatanae          #+#    #+#             */
-/*   Updated: 2023/11/17 11:37:33 by cnatanae         ###   ########.fr       */
+/*   Updated: 2023/11/18 07:05:30 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	free_all(t_char **str)
+void	*free_all(t_char **str)
 {
 	t_char	*aux;
 
@@ -22,6 +22,7 @@ void	free_all(t_char **str)
 		free(*str);
 		*str = aux;
 	}
+	return (NULL);
 }
 
 t_char	*ft_node(char c)
@@ -71,8 +72,9 @@ t_char	*add_node_to_end(t_list *struc, t_char *end, char c)
 	new_node = ft_node(c);
 	if (!new_node)
 	{
-		free_all(&struc->string);
-		return (NULL);
+		free(struc->buffer);
+		free(struc[struc->fd].buffer);
+		return (free_all(&struc->string));
 	}
 	if (end)
 		end->next = new_node;
