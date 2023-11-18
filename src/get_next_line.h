@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:53:18 by cnatanae          #+#    #+#             */
-/*   Updated: 2023/11/17 11:41:24 by cnatanae         ###   ########.fr       */
+/*   Updated: 2023/11/18 07:49:00 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include <stdio.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 13
+#  define BUFFER_SIZE 42
 # endif
 
 /**@brief Struct to store a character and a pointer to the next character.
@@ -44,13 +43,14 @@ typedef struct s_char
 */
 typedef struct s_list
 {
-	unsigned long int	fd;
-	unsigned long int	pos;
-	long int			read;
-	unsigned long int	len;
-	char				buffer[BUFFER_SIZE + 1];
-	t_char				*string;
-}						t_list;
+	int		fd;
+	int		pos;
+	int		read;
+	int		len;
+	int		exist_n;
+	char	*buffer;
+	t_char	*string;
+}			t_list;
 
 /**@brief Function to get the next line.
  * 
@@ -64,7 +64,7 @@ char	*get_next_line(int fd);
  * @param *str The pointer to the linked list.
  * @return char* The pointer to NULL.
 */
-void	free_all(t_char **str);
+void	*free_all(t_char **str);
 
 /**@brief Function to create a new node and add character to it.
  * 
