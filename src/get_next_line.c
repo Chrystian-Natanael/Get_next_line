@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:53:15 by cnatanae          #+#    #+#             */
-/*   Updated: 2023/11/17 11:37:48 by cnatanae         ###   ########.fr       */
+/*   Updated: 2023/11/18 07:46:29 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,16 @@
 
 char	*ft_build_string(t_list *struc)
 {
-	size_t				size_lk;
-	char				*line;
-	unsigned long int	idx;
-	t_char				*aux;
+	int		idx;
+	char	*line;
+	size_t	size_lk;
+	t_char	*aux;
 
 	idx = 0;
 	size_lk = ft_lstsize(struc->string, struc);
 	line = malloc(sizeof(char) * size_lk + 2);
 	if (!line)
-	{
-		free_all(&struc->string);
-		return (NULL);
-	}
+		return (free_all(&struc->string));
 	while (struc->string && struc->string->character != '\n')
 	{
 		aux = struc->string;
@@ -44,16 +41,29 @@ char	*ft_build_string(t_list *struc)
 	return (line);
 }
 
+int	ft_validation(t_list *struc)
+{
+	while (struc->pos <= BUFFER_SIZE)
+		struc->buffer[struc->pos++] = '\0';
+	struc->read = read(struc->fd, struc->buffer, BUFFER_SIZE);
+	struc->pos = 0;
+	if (struc->read == -1)
+	{
+		free(struc->buffer);
+		free_all(&struc->string);
+		return (1);
+	}
+	return (0);
+}
+
 char	*ft_add_lk(t_list *struc)
 {
-	t_char				*aux;
-	int					exist_n;
+	t_char	*aux;
 
-	exist_n = 0;
 	aux = struc->string;
 	while (aux && aux->next)
 		aux = aux->next;
-	while (exist_n == 0 && struc->buffer[struc->pos] != '\0')
+	while (struc->exist_n == 0 && struc->buffer[struc->pos] != '\0')
 	{
 		while (struc->buffer[struc->pos])
 		{
@@ -62,18 +72,11 @@ char	*ft_add_lk(t_list *struc)
 				return (NULL);
 		}
 		struc->pos = 0;
-		exist_n = ft_find_n(struc);
-		if (exist_n == 0)
+		struc->exist_n = ft_find_n(struc);
+		if (struc->exist_n == 0)
 		{
-			while (struc->pos <= BUFFER_SIZE)
-				struc->buffer[struc->pos++] = '\0';
-			struc->read = read(struc->fd, struc->buffer, BUFFER_SIZE);
-			struc->pos = 0;
-			if (struc->read == -1)
-			{
-				free_all(&struc->string);
+			if (ft_validation(struc))
 				return (NULL);
-			}
 		}
 	}
 	return (ft_build_string(struc));
@@ -81,28 +84,27 @@ char	*ft_add_lk(t_list *struc)
 
 char	*get_next_line(int fd)
 {
-	static t_list	struc;
+	static t_list	struc[1024];
+	char			*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-	{
+	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
 		return (NULL);
-	}
-	struc.pos = 0;
-	struc.fd = fd;
-	while (struc.pos <= BUFFER_SIZE + 1)
-		struc.buffer[struc.pos++] = '\0';
-	struc.pos = 0;
-	struc.read = read(fd, struc.buffer, BUFFER_SIZE);
-	struc.buffer[struc.read] = '\0';
-	if (struc.read == -1)
+	struc[fd].pos = 0;
+	struc[fd].fd = fd;
+	struc[fd].buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	while (struc[fd].pos <= BUFFER_SIZE)
+		struc[fd].buffer[struc[fd].pos++] = '\0';
+	struc[fd].pos = 0;
+	struc[fd].read = read(fd, struc[fd].buffer, BUFFER_SIZE);
+	struc[fd].exist_n = 0;
+	if (struc[fd].read == -1 || !struc[fd].buffer
+		|| (!struc[fd].string && struc[fd].buffer[struc[fd].pos] == '\0'))
 	{
-		free_all(&struc.string);
-		return (NULL);
+		free(struc[fd].buffer);
+		return (free_all(&struc[fd].string));
 	}
-	if (!struc.string && struc.buffer[struc.pos] == '\0')
-	{
-		free_all(&struc.string);
-		return (NULL);
-	}
-	return (ft_add_lk(&struc));
+	struc[fd].buffer[struc[fd].read] = '\0';
+	line = ft_add_lk(&struc[fd]);
+	free(struc[fd].buffer);
+	return (line);
 }
