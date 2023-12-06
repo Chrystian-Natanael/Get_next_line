@@ -16,9 +16,9 @@
 
 <h3> 🦮 Summary: 🦮 <br>
 <br>
-<a href="https://github.com/Chrystian-Natanael/Get_next_line#what-is-gnl" style="color: inherit; text-decoration: none;">🔗 O que é a GNL </a> <br> <br>
-<a href="https://github.com/Chrystian-Natanael/Get_next_line#mandatory-part" style="color: inherit; text-decoration: none;">🔗 Parte mandatória </a> <br> <br>
-<a href="https://github.com/Chrystian-Natanael/Libft#-bonus-part" style="color: inherit; text-decoration: none;">🔗 Parte bonus </a>
+<a href="https://github.com/Chrystian-Natanael/Get_next_line/blob/main/README_BR.md#o-que-%C3%A9-a-gnl-" style="color: inherit; text-decoration: none;">🔗 O que é a GNL </a> <br> <br>
+<a href="https://github.com/Chrystian-Natanael/Get_next_line/blob/main/README_BR.md#parte-mandat%C3%B3ria-" style="color: inherit; text-decoration: none;">🔗 Parte mandatória </a> <br> <br>
+<a href="https://github.com/Chrystian-Natanael/" style="color: inherit; text-decoration: none;">🔗 Parte bonus </a>
 <br>
 </h3>
 
