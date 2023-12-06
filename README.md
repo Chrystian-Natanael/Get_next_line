@@ -18,7 +18,7 @@
 <br>
 <a href="https://github.com/Chrystian-Natanael/Get_next_line#what-is-gnl-" style="color: inherit; text-decoration: none;">🔗 What is GNL </a> <br> <br>
 <a href="https://github.com/Chrystian-Natanael/Get_next_line#mandatory-part-" style="color: inherit; text-decoration: none;">🔗 Mandatory part </a> <br> <br>
-<a href="https://github.com/Chrystian-Natanael/" style="color: inherit; text-decoration: none;">🔗 Bonus part </a>
+<a href="https://github.com/Chrystian-Natanael/Get_next_line#how-to-use-it-" style="color: inherit; text-decoration: none;">🔗 How to use it </a>
 <br>
 </h3>
 
