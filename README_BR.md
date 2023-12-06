@@ -1,8 +1,8 @@
-# `Let's talk about: GNL` 💬
+# `Vamos falar sobre: GNL` 💬
 
 [<img src="https://raw.githubusercontent.com/Chrystian-Natanael/Aleatorios/master/Mycovers/CoverGNL.png" alt="libft_banner" width="1000">](https://github.com/Chrystian-Natanael/Aleatorios/blob/master/Mycovers/CoverGNL.png)
 
-### `Select a language:`
+### `Selelecione a linguagem:`
 
 <p align="center">
   <a href="https://github.com/Chrystian-Natanael/">
@@ -14,7 +14,7 @@
   </a>
 </p>
 
-## `What is GNL?` 🤔
+## `O que é a GNL?` 🤔
 
 <p align="center">
   <a href="https://github.com/Chrystian-Natanael/Libft">
