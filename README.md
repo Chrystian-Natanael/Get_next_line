@@ -69,3 +69,43 @@ The mandatory part of the project states that the `Get_next_line()` function mus
 - Remember that your program must `compile` with `-Wall -Wextra -Werror`
 
 - You must only `deliver` the following files to your repository: `get_next_line.c`, `get_next_line_utils.c`, `get_next_line.h`
+
+# `How to use it?` 🤔
+
+### First step, `clone` my repository in the location where you will run it.
+
+```bash
+git clone https://github.com/Chrystian-Natanael/Get_next_line.git
+```
+
+### Then, simply include the header file in your main file to have access to the `get_next_line()` function.
+
+```c
+# include "get_next_line.h"
+```
+
+### Finally, just `call` the function in your main file, passing a `file descriptor`.
+```c
+get_next_line(fd);
+```
+
+### Below we have an example of a main file, just `make sure` you have a `test.txt` file at the root of your repository:
+
+```c
+# include "get_next_line.h" // for use get_next_line
+# include <stdio.h> // for use printf
+# include <fcntl.h> // for use open
+
+int	main(void)
+{
+	int		fd;
+	char	*line;
+
+	fd = open("test.txt", O_RDONLY); // open file
+	line = get_next_line(fd); // first line
+	printf("%s\n", line); // print first line
+	free(line); // free first line
+	close(fd); // close file
+	return (0);
+}
+```

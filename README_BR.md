@@ -68,3 +68,43 @@ A parte mandatória do projeto diz que a função `Get_next_line()` deve ler uma
 - Lembre-se de que seu programa deve `compilar` com `-Wall -Wextra -Werror`
 
 - Você deve `apenas entregar` os seguintes arquivos para o seu repositório: `get_next_line.c`, `get_next_line_utils.c`, `get_next_line.h`
+
+# `Como usar isso?` 🤔
+
+### Primeiro passo, `clone` o meu repositório no local onde você irá executá-lo.
+
+```bash
+git clone https://github.com/Chrystian-Natanael/Get_next_line.git
+```
+
+### Depois, inclua o cabeçalho em seu arquivo principal para ter acesso à função `get_next_line()`.
+
+```c
+# include "get_next_line.h"
+```
+
+### E por fim, apenas `chame` a função em seu arquivo principal, passando como argumento um `File descriptor`.
+```c
+get_next_line(fd);
+```
+
+### Abaixo temos um exemplo de arquivo principal, tenha `certeza` de que você possui um arquivo `test.txt` na raiz do seu repositório:
+
+```c
+# include "get_next_line.h" // para usar get_next_line
+# include <stdio.h> // para usar printf
+# include <fcntl.h> // para usar open
+
+int	main(void)
+{
+	int		fd;
+	char	*line;
+
+	fd = open("test.txt", O_RDONLY); // abrindo o arquivo
+	line = get_next_line(fd); // lendo a primeira linha
+	printf("%s\n", line); // imprimindo a primeira linha
+	free(line); // liberando a primeira linha
+	close(fd); // fechando o arquivo
+	return (0);
+}
+```
