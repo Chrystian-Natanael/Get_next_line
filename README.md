@@ -5,11 +5,11 @@
 ### `Select a language:`
 
 <p align="center">
-  <a href="https://github.com/Chrystian-Natanael/">
+  <a href="https://github.com/Chrystian-Natanael/Get_next_line/blob/main/README_BR.md">
   <img src="https://github.com/Chrystian-Natanael/Aleatorios/raw/master/Flags/Round_Brazil_Flag.png" alt="libft" width="50">
   </a>
-  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-  <a href="https://github.com/Chrystian-Natanael/">
+  &nbsp &nbsp &nbsp &nbsp
+  <a href="https://github.com/Chrystian-Natanael/Get_next_line">
   <img src="https://github.com/Chrystian-Natanael/Aleatorios/raw/master/Flags/Round_EUA_Flag.png" alt="libft" width="50">
   </a>
 </p>
