@@ -84,9 +84,12 @@ git clone https://github.com/Chrystian-Natanael/Get_next_line.git
 # include "get_next_line.h"
 ```
 
-### Finally, just `call` the function in your main file, passing a `file descriptor`.
+### Finally, just `call` the function in your main file, passing a `file descriptor`. Make sure you have a variable of type `char *` to receive the return of the function. (Which is the read line).
+
 ```c
-get_next_line(fd);
+char	*line;
+
+line = get_next_line(fd);
 ```
 
 ### Below we have an example of a main file, just `make sure` you have a `test.txt` file at the root of your repository:

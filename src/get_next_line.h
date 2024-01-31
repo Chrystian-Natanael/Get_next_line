@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:53:18 by cnatanae          #+#    #+#             */
-/*   Updated: 2023/11/18 07:49:00 by cnatanae         ###   ########.fr       */
+/*   Updated: 2023/11/23 14:55:31 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_char
  * @param buffer The buffer.
  * @param *string The pointer to the next node.
 */
-typedef struct s_list
+typedef struct s_listgnl
 {
 	int		fd;
 	int		pos;
@@ -50,7 +50,7 @@ typedef struct s_list
 	int		exist_n;
 	char	*buffer;
 	t_char	*string;
-}			t_list;
+}			t_listgnl;
 
 /**@brief Function to get the next line.
  * 
@@ -76,39 +76,39 @@ t_char	*ft_node(char c);
 /**@brief Function to get the size of the linked list.
  * 
  * @param *lst The pointer to the linked list.
- * @param *struc The pointer to the struct t_list.
+ * @param *struc The pointer to the struct t_listgnl.
  * @return int The size of the linked list.
 */
-int		ft_lstsize(t_char *lst, t_list *struc);
+int		ft_lstsize_gnl(t_char *lst, t_listgnl *struc);
 
 /**@brief Function to find the character '\n' in the linked list.
  * 
- * @param *struc The pointer to the struct t_list.
+ * @param *struc The pointer to the struct t_listgnl.
  * @return int 1 if '\n' is found, 0 if not.
 */
-int		ft_find_n(t_list *struc);
+int		ft_find_n(t_listgnl *struc);
 
 /**@brief Function to build the string.
  * 
- * @param *struc The pointer to the struct t_list.
+ * @param *struc The pointer to the struct t_listgnl.
  * @return char* The pointer to the string.
 */
-char	*ft_build_string(t_list *struc);
+char	*ft_build_string(t_listgnl *struc);
 
 /**@brief Function to add the buffer to the linked list.
  * 
- * @param *struc The pointer to the struct t_list.
+ * @param *struc The pointer to the struct t_listgnl.
  * @return char* The pointer to the string.
 */
-char	*ft_add_lk(t_list *struc);
+char	*ft_add_lk(t_listgnl *struc);
 
 /**@brief Function to add a new node to the end of the linked list.
  * 
- * @param *struc The pointer to the struct t_list.
+ * @param *struc The pointer to the struct t_listgnl.
  * @param *end The pointer to the last node of the linked list.
  * @param c The character to be added.
  * @return t_char* The pointer to the new node.
 */
-t_char	*add_node_to_end(t_list *struc, t_char *end, char c);
+t_char	*add_node_to_end(t_listgnl *struc, t_char *end, char c);
 
 #endif

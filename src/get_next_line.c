@@ -6,13 +6,13 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:53:15 by cnatanae          #+#    #+#             */
-/*   Updated: 2023/11/18 07:46:29 by cnatanae         ###   ########.fr       */
+/*   Updated: 2023/12/06 13:03:02 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_build_string(t_list *struc)
+char	*ft_build_string(t_listgnl *struc)
 {
 	int		idx;
 	char	*line;
@@ -20,7 +20,7 @@ char	*ft_build_string(t_list *struc)
 	t_char	*aux;
 
 	idx = 0;
-	size_lk = ft_lstsize(struc->string, struc);
+	size_lk = ft_lstsize_gnl(struc->string, struc);
 	line = malloc(sizeof(char) * size_lk + 2);
 	if (!line)
 		return (free_all(&struc->string));
@@ -41,7 +41,7 @@ char	*ft_build_string(t_list *struc)
 	return (line);
 }
 
-int	ft_validation(t_list *struc)
+int	ft_validation(t_listgnl *struc)
 {
 	while (struc->pos <= BUFFER_SIZE)
 		struc->buffer[struc->pos++] = '\0';
@@ -56,7 +56,7 @@ int	ft_validation(t_list *struc)
 	return (0);
 }
 
-char	*ft_add_lk(t_list *struc)
+char	*ft_add_lk(t_listgnl *struc)
 {
 	t_char	*aux;
 
@@ -84,8 +84,8 @@ char	*ft_add_lk(t_list *struc)
 
 char	*get_next_line(int fd)
 {
-	static t_list	struc[1024];
-	char			*line;
+	static t_listgnl	struc[1024];
+	char				*line;
 
 	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
 		return (NULL);

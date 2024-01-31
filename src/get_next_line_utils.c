@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:53:12 by cnatanae          #+#    #+#             */
-/*   Updated: 2023/11/18 07:05:30 by cnatanae         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:00:02 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_char	*ft_node(char c)
 	return (new_node);
 }
 
-int	ft_lstsize(t_char *lst, t_list *struc)
+int	ft_lstsize_gnl(t_char *lst, t_listgnl *struc)
 {
 	int	idx;
 
@@ -51,7 +51,7 @@ int	ft_lstsize(t_char *lst, t_list *struc)
 	return (idx);
 }
 
-int	ft_find_n(t_list *struc)
+int	ft_find_n(t_listgnl *struc)
 {
 	t_char	*aux;
 
@@ -65,7 +65,7 @@ int	ft_find_n(t_list *struc)
 	return (0);
 }
 
-t_char	*add_node_to_end(t_list *struc, t_char *end, char c)
+t_char	*add_node_to_end(t_listgnl *struc, t_char *end, char c)
 {
 	t_char	*new_node;
 

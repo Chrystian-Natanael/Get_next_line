@@ -83,9 +83,12 @@ git clone https://github.com/Chrystian-Natanael/Get_next_line.git
 # include "get_next_line.h"
 ```
 
-### E por fim, apenas `chame` a função em seu arquivo principal, passando como argumento um `File descriptor`.
+### E por fim, apenas `chame` a função em seu arquivo principal, passando como argumento um `File descriptor`. Tenha certeza de ter uma váriavel do tipo `char *` para receber o retorno da função. (Que é a linha lida).
+
 ```c
-get_next_line(fd);
+char	*line;
+
+line = get_next_line(fd);
 ```
 
 ### Abaixo temos um exemplo de arquivo principal, tenha `certeza` de que você possui um arquivo `test.txt` na raiz do seu repositório:
